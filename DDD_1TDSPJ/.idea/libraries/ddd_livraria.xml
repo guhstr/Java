@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ddd-livraria">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ddd-livraria.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

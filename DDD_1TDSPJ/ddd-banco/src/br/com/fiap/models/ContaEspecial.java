@@ -1,19 +1,34 @@
 package br.com.fiap.models;
 
-public class ContaEspecial {
-    private double limiteConta;
+public class ContaEspecial extends ContaComum{
+    private double limite;
 
-    public double getLimiteConta() {
-        return limiteConta;
+    public Long abrirConta(int senha, double limite){
+        this.limite = limite;
+        return super.abrirConta(senha);
     }
 
-    public void setLimiteConta(double limiteConta) {
-        this.limiteConta = limiteConta;
+    @Override
+    public String sacarValor(double valor){
+        if(this.saldo >= valor){
+            this.saldo -= saldo - valor;
+            return "Saque efetuado com sucesso. Saldo atual da conta: " + saldo;
+        }
+        else if (this.saldo+limite >= valor) {
+            this.saldo -= valor;
+            this.limite += saldo;
+            return "Saque efetuado com sucesso utilizando o limite";
+        }
+        else{
+            return "Saque não efetuado, saldo insuficiente.";
+        }
     }
 
-    public Long abrirConta(int senha, double limiteConta){
-        super.abrirConta();
-        System.out.println("Endereço: " + endereco);
-        System.out.println("Taxa de entrega: " + taxaEntrega);
+    public double getLimite() {
+        return limite;
+    }
+
+    public void setLimite(double limite) {
+        this.limite = limite;
     }
 }
